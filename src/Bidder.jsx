@@ -51,7 +51,7 @@ export default function MattBidder (props) {
       <p>Your bid represents the most you are willing to pay to get an edition.</p>
       <p>You are guaranteed to not pay more than any other winner.</p>
       <Chart
-          width={'500px'}
+          width={'450px'}
           height={'300px'}
           chartType="AreaChart"
           loader={<div>Loading Chart</div>}
@@ -143,11 +143,16 @@ function generateBidData (bidders) {
 
 function generateRandomBidders () {
   const bidders = {};
+
+  const bidderCount = Math.round(Math.random() * 10) + 1;
+  console.log(`generating ${bidderCount} bidders`);
+
   // Initialize sample bidders
-  for (var i = 0; i < 30; i++) {
+  for (var i = 0; i < bidderCount; i++) {
     const name = Math.random();
-    const rand = Math.round(name * 10);
+    const rand = Math.round(name * 100);
     bidders[name] = rand;
   }
+  bidders['cheapo'] = 0;
   return bidders;
 }
